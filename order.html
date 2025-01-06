@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking - Car Rental</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #003366;
+            color: #fff;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .order-info {
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .order-info:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .order-info h2 {
+            color: #003366;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .order-info p {
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .order-info p strong {
+            font-weight: 600;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar span {
+            display: block;
+            height: 100%;
+            background-color: #4caf50;
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+
+
+
+        
+        /* Back Button */
+        .back-button {
+            background: none;
+            color: #d5e1ed;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 10px; /* Adjusted to place below the header */
+            left: 1rem;
+        }
+
+
+
+
+        /* Buttons */
+        .order-info .cancel-btn,
+        .order-info .track-btn {
+            padding: 1rem;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .order-info .cancel-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .order-info .track-btn:hover {
+            background-color: #00509e;
+        }
+
+        /* Cancel Info Section */
+        .cancel-info {
+            display: none; /* Hidden by default */
+            background-color: #f44336; /* Red background to indicate urgency */
+            color: white; /* White text */
+            padding: 2rem;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 1rem;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.3s ease;
+        }
+
+        /* Show the cancel info when triggered */
+        .cancel-info.show {
+            display: block; /* Makes the section visible */
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 2rem 0;
+            background-color: #003366;
+            color: white;
+        }
+
+        footer a {
+            color: #f1f1f1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 2rem;
+            }
+
+            .order-info {
+                padding: 1.5rem;
+            }
+
+            .order-info h2 {
+                font-size: 1.75rem;
+            }
+
+            .order-info p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tracking  Order - Car Rental</h1>
+</header>
+
+
+<button class="back-button" onclick="window.history.back();" aria-label="Go back to the previous page">Back</button>
+
+
+<div class="container">
+    <div class="order-info">
+        <h2>Your Order</h2>
+        <p><strong>Car Type:</strong> <span id="orderCarType"></span></p>
+        <p><strong>Car Color:</strong> <span id="orderCarColor"></span></p>
+        <p><strong>Total Price:</strong> R<span id="orderPrice"></span></p>
+        <p><strong>Arrival Time:</strong> <span id="arrivalTime"></span></p>
+        <p><strong>Cancel Booking for 25% Fee:</strong> <span id="cancelFee"></span></p>
+
+        <!-- Order Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar"><span id="progress"></span></div>
+            <p id="progressText">Booking Process...</p>
+        </div>
+
+        <button class="track-btn" onclick="trackOrder()">Track Arrival</button>
+        <button class="cancel-btn" onclick="cancelOrder()">Cancel Booking</button>
+    </div>
+
+    <!-- Cancellation Info -->
+    <div id="cancelInfo" class="cancel-info">
+        <p><strong>Cancel Booking for 25% Fee:</strong> You will be charged a 25% cancellation fee (R <span id="cancelFeeAmount"></span>) if you cancel your booking.</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Car Rental Company | <a href="#">Terms and Conditions</a> | <a href="#">Privacy Policy</a></p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const carType = urlParams.get('carType') || 'Not selected';
+        const carColor = urlParams.get('carColor') || 'Not selected';
+        const totalAmount = parseFloat(urlParams.get('totalAmount')) || 0.00;
+
+        // Display Order Details
+        document.getElementById('orderCarType').textContent = carType;
+        document.getElementById('orderCarColor').textContent = carColor;
+        document.getElementById('orderPrice').textContent = totalAmount.toFixed(2);
+        document.getElementById('arrivalTime').textContent = "2:00 PM (Your rental will arrive at the specified location).";
+        
+        // Calculate Cancellation Fee (25%)
+        const cancelFee = (totalAmount * 0.25).toFixed(2);
+        document.getElementById('cancelFee').textContent = `R ${cancelFee}`;
+        document.getElementById('cancelFeeAmount').textContent = cancelFee; // Display the fee inside the cancel info as well
+
+        // Simulate the order progress (move in incomplete steps)
+        simulateProgress();
+    });
+
+    function trackOrder() {
+        alert("Tracking your car's arrival...");
+        // Integrate with an actual tracking system if available.
+    }
+
+    function cancelOrder() {
+        const totalAmount = parseFloat(document.getElementById('orderPrice').textContent);
+        const cancelFee = (totalAmount * 0.25).toFixed(2);
+
+        // Show the cancellation message
+        document.getElementById('cancelFeeAmount').textContent = cancelFee;
+        document.getElementById('cancelInfo').classList.add('show');  // Make the cancellation info visible
+
+        if (confirm(`Are you sure you want to cancel the booking? You will be charged a 25% cancellation fee (R ${cancelFee}).`)) {
+            alert('Booking has been canceled.');
+            window.location.href = 'index.html';  // Redirect to home or another page after cancellation.
+        }
+    }
+
+    function simulateProgress() {
+        const stages = [
+            { stage: "Booking Confirmed", progress: 25 },
+            { stage: "Car in Transit", progress: 50 },
+            { stage: "Car Arriving", progress: 75 },
+            { stage: "Delivered", progress: 100 }
+        ];
+
+        let currentStage = 0;
+        const progressBar = document.getElementById('progress');
+        const progressText = document.getElementById('progressText');
+
+        // Initialize progress bar to 0%
+        progressBar.style.width = '0%';
+
+        const interval = setInterval(() => {
+            if (currentStage < stages.length) {
+                console.log(`Stage: ${stages[currentStage].stage} | Progress: ${stages[currentStage].progress}%`);
+
+                // Update the progress bar with incremental steps
+                progressBar.style.width = `${stages[currentStage].progress}%`;
+                progressText.textContent = stages[currentStage].stage;
+
+                currentStage++; // Move to the next stage
+            } else {
+                clearInterval(interval); // Stop when the last stage is reached
+            }
+        }, 3600000);  // 3600000ms = 1 hour
+    }
+</script>
+
+</body>
+</html>
+

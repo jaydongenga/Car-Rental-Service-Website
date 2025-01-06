@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental - Booking & Payment</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.6rem;
+        }
+
+        
+
+        .back-button {
+    background: none;
+    color: #d5e1ed;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+}
+
+
+
+
+
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        /* Booking Form */
+        .booking-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-form h2 {
+            text-align: center;
+            color: #003366;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #003366;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #003366;
+            outline: none;
+        }
+
+        button {
+            padding: 1rem;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        button:hover {
+            background-color: #00509e;
+        }
+
+        /* Payment Section */
+        .payment-form {
+            display: none;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-form h2 {
+            text-align: center;
+            color: #003366;
+        }
+
+        .payment-form input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .payment-form input:focus {
+            border-color: #003366;
+            outline: none;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            color: white;
+            display: none;
+        }
+
+        .message.success {
+            background-color: #4CAF50;
+        }
+
+        .message.failure {
+            background-color: #f44336;
+        }
+
+        @media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+    header {
+        font-size: 1.4rem;
+    }
+    .form-group input,
+    .form-group select {
+        font-size: 0.9rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Car Rental - Booking & Payment</h1>
+</header>
+
+<button class="back-button" onclick="window.history.back();" aria-label="Go back to the previous page">Back</button>
+
+
+<div class="container">
+    <!-- Booking Section -->
+    <section class="booking-form">
+        <h2>Fill out the details to book your car</h2>
+
+        <!-- Car Details Section -->
+        <div class="car-details">
+            <h3>Selected Car:</h3>
+            <p><strong>Car Type:</strong> <span id="carTypeDisplay"></span></p>
+            <p><strong>Car Color:</strong> <span id="carColorDisplay"></span></p>
+            <p><strong>Price:</strong> R<span id="carPriceDisplay"></span> per day</p>
+            <p><strong>Total Rental:</strong> R<span id="totalAmountDisplay"></span></p>
+            <p><strong>Rental Duration:</strong> <span id="rentalDurationDisplay"></span> days</p>
+        </div>
+
+        <form id="bookingForm">
+            <!-- Hidden inputs to pass car info -->
+            <input type="hidden" id="carType" name="carType">
+            <input type="hidden" id="carPrice" name="carPrice">
+            <input type="hidden" id="carColor" name="carColor">
+            <input type="hidden" id="totalAmount" name="totalAmount">
+            <input type="hidden" id="rentalDuration" name="rentalDuration">
+
+            <div class="form-group">
+                <label for="customerName">Your Name:</label>
+                <input type="text" id="customerName" name="customerName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="rentalDate">Rental Date:</label>
+                <input type="date" id="rentalDate" name="rentalDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="returnDate">Return Date:</label>
+                <input type="date" id="returnDate" name="returnDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="creditCard">Credit Card</option>
+                    <option value="debitCard">Debit Card</option>
+                </select>
+            </div>
+
+            <button type="button" onclick="showPaymentForm()">Proceed to Payment</button>
+        </form>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment-form" style="display: none;" id="paymentSection">
+        <h2>Complete Your Payment</h2>
+        <form method="POST" id="paymentForm" novalidate>
+            <!-- Amount Due -->
+            <div class="form-group">
+                <label for="paymentAmount">Amount Due: </label>
+                <input type="text" id="paymentAmount" name="paymentAmount" readonly value="" aria-label="Amount Due">
+            </div>
+
+            <!-- Card Number -->
+            <div class="form-group">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber" required placeholder="1234 5678 9876 5432" maxlength="19" class="card-input" aria-label="Card Number" oninput="formatCardNumber(this)">
+            </div>
+
+            <!-- Expiry Date -->
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" name="expiryDate" required placeholder="MM/YY" maxlength="5" aria-label="Expiry Date" oninput="formatExpiryDate(this)">
+            </div>
+
+            <!-- CVV -->
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required placeholder="123" maxlength="3" aria-label="CVV">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Pay Now</button>
+        </form>
+    </section>
+</div>
+
+<script>
+   
+   
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const carType = urlParams.get('carType') || 'Not selected';
+    const carPrice = parseFloat(urlParams.get('carPrice')) || 0.00;
+    const carColor = urlParams.get('carColor') || 'Not selected';
+
+    document.getElementById('carTypeDisplay').textContent = carType;
+    document.getElementById('carColorDisplay').textContent = carColor;
+    document.getElementById('carPriceDisplay').textContent = carPrice.toFixed(2);
+
+    document.getElementById('carType').value = carType;
+    document.getElementById('carPrice').value = carPrice;
+    document.getElementById('carColor').value = carColor;
+
+    const rentalDateInput = document.getElementById('rentalDate');
+    const returnDateInput = document.getElementById('returnDate');
+    const totalAmountDisplay = document.getElementById('totalAmountDisplay');
+    const rentalDurationDisplay = document.getElementById('rentalDurationDisplay');
+    const totalAmountInput = document.getElementById('totalAmount');
+    const rentalDurationInput = document.getElementById('rentalDuration');
+
+    function calculateRentalAmount() {
+        const rentalDate = new Date(rentalDateInput.value);
+        const returnDate = new Date(returnDateInput.value);
+
+        if (isNaN(rentalDate) || isNaN(returnDate)) {
+            totalAmountDisplay.textContent = '0.00';
+            rentalDurationDisplay.textContent = '0';
+            totalAmountInput.value = 0;
+            rentalDurationInput.value = 0;
+            return;
+        }
+
+        if (returnDate < rentalDate) {
+            alert('Return date cannot be earlier than the rental date.');
+            returnDateInput.value = '';
+            return;
+        }
+
+        const rentalDuration = Math.ceil((returnDate - rentalDate) / (1000 * 60 * 60 * 24)) || 1;
+        const totalAmount = carPrice * rentalDuration;
+
+        rentalDurationDisplay.textContent = rentalDuration;
+        totalAmountDisplay.textContent = totalAmount.toFixed(2);
+
+        rentalDurationInput.value = rentalDuration;
+        totalAmountInput.value = totalAmount.toFixed(2);
+    }
+
+    rentalDateInput.addEventListener('change', calculateRentalAmount);
+    returnDateInput.addEventListener('change', calculateRentalAmount);
+});
+
+function showPaymentForm() {
+    document.querySelector('.booking-form').style.display = 'none';
+    document.getElementById('paymentSection').style.display = 'block';
+    const totalAmount = document.getElementById('totalAmount').value;
+    document.getElementById('paymentAmount').value = 'R ' + totalAmount;
+}
+
+function formatCardNumber(input) {
+    input.value = input.value.replace(/\D/g, '').replace(/(.{4})(?=.)/g, '$1 ');
+}
+
+function formatExpiryDate(input) {
+    input.value = input.value.replace(/\D/g, '').replace(/(.{2})(?=.)/g, '$1/');
+}
+
+// Payment validation
+function validatePaymentForm() {
+    const cardNumber = document.getElementById('cardNumber').value.replace(/\s+/g, '');
+    const expiryDate = document.getElementById('expiryDate').value;
+    const cvv = document.getElementById('cvv').value;
+    const today = new Date();
+    const expiryMonth = parseInt(expiryDate.substring(0, 2), 10);
+    const expiryYear = parseInt('20' + expiryDate.substring(3, 5), 10);
+    const cardNumberPattern = /^[0-9]{16}$/;
+    const cvvPattern = /^[0-9]{3}$/;
+
+    // Validate Card Number
+    if (!cardNumberPattern.test(cardNumber)) {
+        alert('Invalid Card Number. Please enter a 16-digit card number.');
+        return false;
+    }
+
+    // Validate Expiry Date
+    if (expiryDate.length !== 5 || isNaN(expiryMonth) || isNaN(expiryYear) || expiryMonth < 1 || expiryMonth > 12 || expiryYear < today.getFullYear() || (expiryYear === today.getFullYear() && expiryMonth < today.getMonth() + 1)) {
+        alert('Invalid Expiry Date. Please enter a valid future expiry date in MM/YY format.');
+        return false;
+    }
+
+    // Validate CVV
+    if (!cvvPattern.test(cvv)) {
+        alert('Invalid CVV. Please enter a 3-digit CVV.');
+        return false;
+    }
+
+    // If all validations pass, proceed to payment
+    alert('Payment Successful! Thank you for your booking.');
+    showSuccessMessage('Payment Successful!', 'success');
+
+    // Redirect to Order Page after Payment
+    const carType = document.getElementById('carType').value;
+    const carColor = document.getElementById('carColor').value;
+    const totalAmount = document.getElementById('totalAmount').value;
+
+    // Redirect to the order page with necessary query parameters
+    window.location.href = `order.html?carType=${encodeURIComponent(carType)}&carColor=${encodeURIComponent(carColor)}&totalAmount=${encodeURIComponent(totalAmount)}`;
+    return true;
+}
+
+// Function to show a success message with styling
+function showSuccessMessage(message, type) {
+    const successMessage = document.createElement('div');
+    successMessage.classList.add('success-message');
+    successMessage.textContent = message;
+
+    if (type === 'success') {
+        successMessage.style.backgroundColor = '#28a745'; // Green background for success
+        successMessage.style.color = '#fff';
+        successMessage.style.padding = '15px';
+        successMessage.style.borderRadius = '5px';
+        successMessage.style.textAlign = 'center';
+        successMessage.style.fontSize = '1.1rem';
+        successMessage.style.marginTop = '20px';
+        successMessage.style.transition = 'opacity 1s ease-in-out';
+        document.body.appendChild(successMessage);
+
+        setTimeout(() => {
+            successMessage.style.opacity = '0';
+            setTimeout(() => successMessage.remove(), 1000);
+        }, 3000);
+    }
+}
+
+// Attach validation to form submit
+document.getElementById('paymentForm').onsubmit = function(event) {
+    event.preventDefault();
+    validatePaymentForm();
+};
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

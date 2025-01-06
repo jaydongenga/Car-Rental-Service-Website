@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JG's Car Rental - Affordable and reliable car rental service offering a wide range of vehicles including sedans, SUVs, luxury cars, and more. Find your perfect car today!">
+    <meta name="keywords" content="Car Rental, Affordable Car Hire, JG's Car Rental, SUV Rental, Sedan Rental, Luxury Car Rental, Cheap Car Rentals, Vehicle Hire">
+    <meta name="author" content="JG's Car Rental">
+    <meta name="robots" content="index, follow">
+    <title>JG's Car Rental</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+
+<body>
+    <header class="header">
+        <a href="#home" class="logo">JG Cars.</a>
+
+        <nav class="navbar">
+            <a href="#home" style="--i:1" class="active">Home</a>
+            <a href="#about" style="--i:2">About Us</a>
+            <a href="#reviews" style="--i:3">Reviews</a>
+            <a href="#cars" style="--i:4">Cars</a>
+            <a href="#contact" style="--i:5">Contact</a>
+            <a href="order.html" class="order-icon"><i class="fas fa-shopping-cart"></i> Order</a>
+        </nav>
+
+        <div class="social-media">
+            <a href="#" style="--i:1"><i class='bx bxl-twitter'></i></a>
+            <a href="#" style="--i:2"><i class='bx bxl-facebook'></i></a>
+            <a href="#" style="--i:3"><i class='bx bxl-instagram'></i></a>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="home">
+        <div class="home-content">
+           <h1>Ultimate Car Rental Experience</h1>
+            <h3>Reimagined for You!</h3>
+
+            <p>At <b>Car Rental Service</b>, we transform your travel experience with a seamless and stress-free car rental process. 
+                Our diverse fleet of high-quality vehicles caters to every need—whether for business, vacation, or special occasions. 
+                With competitive pricing, an effortless booking system, and exceptional customer support, we’re here to make your journey
+                 smoother from start to finish. Experience the convenience, reliability, and peace of mind today!</p>
+            <a href="#cars" class="btn">Browse Our Cars</a>
+        </div>
+
+
+
+        <div class="home-img">
+            <div class="rhombus">
+                <img src="cars.png" alt="Car">
+            </div>
+        </div>
+
+       
+    </section>
+
+
+
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h1>About Us</h1>
+            <p>At Car Rental Service, we're passionate about making your journey memorable from the moment you step into one of our cars.
+                 Whether you're on a business trip, heading out for a weekend getaway, or simply need a reliable ride for the day, we've got you covered. 
+                 With a diverse fleet of well-maintained vehicles, from sleek sedans to spacious SUVs, we offer hassle-free rentals that cater to your needs.
+                  Our streamlined booking process, competitive pricing, and exceptional customer service ensure that your experience is smooth from start to finish. 
+                  We're not just about renting cars—we're about providing an experience that helps you explore with confidence, knowing that we're here to support you 
+                  every mile of the way.</p>
+        </div>
+    </section>
+    
+
+
+
+
+    
+
+    <section id="reviews" class="review-section">
+        <div class="review-content">
+            <h1>Reviews</h1>
+            <p>Our valued customers have shared their wonderful experiences with us below:</p>
+
+            <div class="review-card">
+                <p class="review-text">"This service was amazing! I had an incredible experience and would recommend it to anyone!"</p>
+                <h4>- John Doe</h4>
+            </div>
+    
+            <div class="review-card">
+                <p class="review-text">"A smooth and enjoyable process. Will definitely return for more!"</p>
+                <h4>- Jane Smith</h4>
+            </div>
+    
+            <div class="review-card">
+                <p class="review-text">"An outstanding experience! Friendly staff and top-notch service."</p>
+                <h4>- Mark Johnson</h4>
+            </div>
+    
+        </div>
+    </section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- car page -->
+
+        <section id="cars" class="cars-section">
+            <div class="container">
+                <!-- Filter Section -->
+                <section class="filter-section">
+                    <h1 class="cars-page-heading">Car Rental Service</h1>
+                    <h2>Filter Cars</h2>
+                    <form id="filterForm">
+                        <label for="search">Search:</label>
+                        <input type="text" id="search" placeholder="Search cars..." name="search">
+        
+                        <label for="carType">Car Type:</label>
+                        <select id="carType" name="car-type">
+                            <option value="">All Types</option>
+                            <option value="sedan">Sedan</option>
+                            <option value="suv">SUV</option>
+                            <option value="hatchback">Hatchback</option>
+                            <option value="luxury">Luxury</option>
+                            <option value="pickup">Pickup Truck</option>
+                            <option value="convertible">Convertible</option>
+                            <option value="van">Van</option>
+                            <option value="minivan">Minivan</option>
+                            <option value="crossover">Crossover</option>
+                            <option value="sports-car">Sports Car</option>
+                            <option value="electric">Electric</option>
+                            <option value="motorcycle">Motorcycle</option>
+                        </select>
+        
+                        <label for="minPrice">Min Price:</label>
+                        <input type="number" id="minPrice" placeholder="Min Price" name="min-price" min="1000" value="">
+        
+                        <label for="maxPrice">Max Price:</label>
+                        <input type="number" id="maxPrice" placeholder="Max Price" name="max-price" min="1000" value="">
+        
+                        <button type="submit">Apply Filters</button>
+                        <button type="button" id="resetButton">Reset Filters</button>
+                    </form>
+                    <div class="error-message" id="errorMessage" style="display: none;">No cars match your filters. Please adjust your criteria.</div>
+                </section>
+        
+                <!-- Car Grid Section -->
+                <section class="car-grid" id="carGrid">
+                    <!-- Car Card Example 1 -->
+                    <div class="car-card" data-type="sedan" data-price="900" data-color="black">
+                        <img src="Pics/car1.jpg" alt="Black Sedan">
+                        <div class="content">
+                            <h3>Sedan</h3>
+                            <p>Color: Black</p>
+                            <p class="price">R900/day</p>
+                            <button onclick="bookCar('sedan')">Book Now</button>
+                        </div>
+                    </div>
+        
+                    <!-- Car Card Example 2 -->
+                    <div class="car-card" data-type="suv" data-price="1250" data-color="black">
+                        <img src="Pics/car2.jpg" alt="Black SUV">
+                        <div class="content">
+                            <h3>SUV</h3>
+                            <p>Color: Black</p>
+                            <p class="price">R1250/day</p>
+                            <button onclick="bookCar('suv')">Book Now</button>
+                        </div>
+                    </div>
+        
+                    <!-- Car Card Example 3 -->
+                    <div class="car-card" data-type="hatchback" data-price="800" data-color="red">
+                        <img src="Pics/car3.jpg" alt="Red Hatchback">
+                        <div class="content">
+                            <h3>Hatchback</h3>
+                            <p>Color: Red</p>
+                            <p class="price">R800/day</p>
+                            <button onclick="bookCar('hatchback')">Book Now</button>
+                        </div>
+                    </div>
+        
+                    <!-- Car Card Example 4 -->
+                    <div class="car-card" data-type="luxury" data-price="3500" data-color="white">
+                        <img src="Pics/car4.jpg" alt="White Luxury">
+                        <div class="content">
+                            <h3>Luxury</h3>
+                            <p>Color: White</p>
+                            <p class="price">R3500 per day</p>
+                            <button onclick="bookCar('luxury')">Book Now</button>
+                        </div>
+                    </div>
+        
+                    <!-- Car Card Example 5 -->
+                    <div class="car-card" data-type="pickup" data-price="2000" data-color="blue">
+                        <img src="Pics/car5" alt="Blue Pickup">
+                        <div class="content">
+                            <h3>Pickup Truck</h3>
+                            <p>Color: Blue</p>
+                            <p class="price">R2000/day</p>
+                            <button onclick="bookCar('pickup')">Book Now</button>
+                        </div>
+                    </div>
+    
+                <div class="car-card" data-type="convertible" data-price="1500" data-color="white">
+                    <img src="Pics/car6" alt="White Convertible">
+                    <div class="content">
+                        <h3>Convertible</h3>
+                        <p>Color: White</p>
+                        <p class="price">R1500/day</p>
+                        <button onclick="bookCar('convertible')">Book Now</button>
+                    </div>
+                </div>
+    
+                <div class="car-card" data-type="van" data-price="1700" data-color="black">
+                    <img src="Pics/car7" alt="Black Van">
+                    <div class="content">
+                        <h3>Van</h3>
+                        <p>Color: Black</p>
+                        <p class="price">R1700/day</p>
+                        <button onclick="bookCar('van')">Book Now</button>
+                    </div>
+                </div>
+    
+                <div class="car-card" data-type="minivan" data-price="1250" data-color="black">
+                    <img src="Pics/car8.jpg" alt="Grey Minivan">
+                    <div class="content">
+                        <h3>Minivan</h3>
+                        <p>Color: Black</p>
+                        <p class="price">R1250/day</p>
+                        <button onclick="bookCar('minivan')">Book Now</button>
+                    </div>
+                </div>
+    
+                <div class="car-card" data-type="crossover" data-price="1500" data-color="red">
+                    <img src="Pics/car9.jpg" alt="Red Crossover">
+                    <div class="content">
+                        <h3>Crossover</h3>
+                        <p>Color: Red</p>
+                        <p class="price">R1500/day</p>
+                        <button onclick="bookCar('crossover')">Book Now</button>
+                    </div>
+                </div>
+    
+                <div class="car-card" data-type="sports-car" data-price="4000" data-color="blue">
+                    <img src="Pics/car10.jpg" alt="Blue Sports Car">
+                    <div class="content">
+                        <h3>Sports Car</h3>
+                        <p>Color: Blue</p>
+                        <p class="price">R4000/day</p>
+                        <button onclick="bookCar('sports-car')">Book Now</button>
+                    </div>
+                </div>
+    
+                <div class="car-card" data-type="electric" data-price="1000" data-color="white">
+                    <img src="Pics/car11.jpg" alt=" Electric Car">
+                    <div class="content">
+                        <h3>Electric Car</h3>
+                        <p>Color: White</p>
+                        <p class="price">R1000/day</p>
+                        <button onclick="bookCar('electric')">Book Now</button>
+                    </div>
+                </div>
+    
+                <div class="car-card" data-type="motorcycle" data-price="1500" data-color="black">
+                    <img src="Pics/car12.jpg" alt="Black Motorcycle">
+                    <div class="content">
+                        <h3>Motorcycle</h3>
+                        <p>Color: Black</p>
+                        <p class="price">R1500/day</p>
+                        <button onclick="bookCar('motorcycle')">Book Now</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    
+    <script>
+        // Filter functionality
+        const cars = document.querySelectorAll('.car-card');
+        const filterForm = document.getElementById('filterForm');
+        const searchInput = document.getElementById('search');
+        const carTypeSelect = document.getElementById('carType');
+        const minPriceInput = document.getElementById('minPrice');
+        const maxPriceInput = document.getElementById('maxPrice');
+        const errorMessage = document.getElementById('errorMessage');
+    
+        filterForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const searchQuery = searchInput.value.toLowerCase();
+            const carType = carTypeSelect.value;
+            const minPrice = minPriceInput.value ? parseInt(minPriceInput.value) : 0;
+            const maxPrice = maxPriceInput.value ? parseInt(maxPriceInput.value) : Infinity;
+            let hasVisibleCars = false;
+    
+            cars.forEach(car => {
+                const carName = car.querySelector('h3').textContent.toLowerCase();
+                const carTypeData = car.getAttribute('data-type');
+                const carPrice = parseInt(car.getAttribute('data-price'));
+                const carColor = car.getAttribute('data-color').toLowerCase();
+    
+                if ((carName.includes(searchQuery) || carColor.includes(searchQuery)) &&
+                    (carType === '' || carTypeData === carType) &&
+                    carPrice >= minPrice && carPrice <= maxPrice) {
+                    car.style.display = 'block';
+                    hasVisibleCars = true;
+                } else {
+                    car.style.display = 'none';
+                }
+            });
+    
+            if (!hasVisibleCars) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+    
+        // Booking functionality
+        function bookCar(carType) {
+            const carCard = document.querySelector(`.car-card[data-type="${carType}"]`);
+            const carPrice = carCard.getAttribute('data-price');
+            const carColor = carCard.getAttribute('data-color');
+            const bookingPageUrl = `booking.html?carType=${carType}&carPrice=${carPrice}&carColor=${carColor}`;
+            window.location.href = bookingPageUrl;
+        }
+
+                // Reset functionality
+        resetButton.addEventListener('click', () => {
+            searchInput.value = '';
+            carTypeSelect.value = '';
+            minPriceInput.value = '';
+            maxPriceInput.value = '';
+            errorMessage.style.display = 'none';
+            cars.forEach(car => {
+                car.style.display = 'block';
+            });
+        });
+    </script>
+
+
+
+
+<br><br><br>
+
+
+
+
+
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>We would love to hear from you! Feel free to reach out to us for any queries or assistance.</p>
+    <form action="#" method="post">
+        <!-- Name Field (Required) -->
+        <input type="text" placeholder="Your Name" required minlength="2" maxlength="100" pattern="[A-Za-z\s]+" title="Only letters and spaces are allowed." required>
+        
+        <!-- Email Field (Required with proper format) -->
+        <input type="email" placeholder="Your Email" required>
+        
+        <!-- Phone Number Field (Optional with Pattern) -->
+        <input type="tel" placeholder="Your Phone Number (Optional)" pattern="[\+]?[\d\s]{7,15}" title="Phone number should be 7 to 15 digits long and may contain spaces or a plus sign.">
+        
+        <!-- Message Field (Required) -->
+        <textarea placeholder="Your Message" required minlength="10" maxlength="500"></textarea>
+        
+        <!-- Submit Button -->
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</section>
+
+
+<!-- Footer Section -->
+<footer class="footer">
+    <p>&copy; 2024 Car Rental Service. All Rights Reserved.</p>
+    <div class="footer-social">
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+    </div>
+</footer>
+
+
+
+<button id="scroll-to-top" onclick="scrollToTop()">&#8593;</button>
+
+<script>
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1188 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+html, body {
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    scroll-behavior: smooth;
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+}
+
+body {
+    background: #eaeaea;
+}
+
+
+
+
+
+
+/* Header Section */
+.header {
+    position: fixed; /* Make the header fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #dcdce4; /* Light grayish background */
+    padding: 10px 8%; /* Reduce padding for a thinner navbar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow for a bar-like effect */
+    transition: background-color 0.3s ease;
+}
+
+/* Logo styling */
+.header .logo {
+    font-size: 20px; /* Slightly smaller font size */
+    color: #222;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Navbar Links styling */
+.navbar a {
+    display: inline-block;
+    font-size: 16px; /* Smaller font size for a more compact navbar */
+    color: #222;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 15px; /* Reduce margin between links */
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #1743e3;
+}
+
+
+
+
+
+
+
+
+/* Social Media Icons */
+.social-media {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    height: 40px;
+}
+
+.social-media a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid transparent;
+    text-decoration: none;
+    transform: rotate(45deg);
+    transition: border-color 0.3s ease;
+}
+
+.social-media a:hover {
+    border-color: #eaeaea;
+}
+
+.social-media a i {
+    font-size: 24px;
+    color: #000000; /* Set icon color to black */
+    transform: rotate(-45deg);
+}
+
+
+
+
+
+
+
+
+
+
+.home{
+    position: relative;
+    width: 100%;
+    height:100vh;
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    padding: 50px 8% 0;
+   /* overflow: hidden; */
+}
+
+
+
+.home-content{
+    max-width: 630px;
+
+}
+
+.home-content h1 {
+     font-size: 50px;
+     line-height: 1.2;
+     opacity: 0;
+     animation: slideBottom 1s ease forwards;
+     animation-delay: 1s;
+}
+
+.home-content h3 {
+    font-size: 40px;
+    color: #1743e3;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 1.3s;
+}
+
+
+.home-content p {
+    font-size: 16px;
+    margin: 15px 0 30px;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1.6s;
+}
+
+
+.btn  {
+   display: inline-block;
+   padding: 10px 20px;
+   background: #1743e3;
+   border: 2px solid #1743e3;
+   border-radius: 6px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+   font-size: 16px;
+   color: #eaeaea;
+   letter-spacing: 1px;
+   text-decoration: none;
+   font-weight: 600;
+   transition: .5s;
+   opacity: 0;
+     animation: slideTop 1s ease forwards;
+     animation-delay: 2s;
+}
+
+
+
+
+.btn:hover{
+    background: transparent;
+    color: #1743e3;
+
+}
+
+
+
+
+.home-img {
+    position: relative;
+    right: -7%; 
+    width: 450px;
+    height: 450px;
+    transform: rotate(45deg);
+}
+
+.home-img .rhombus{
+    position: absolute;
+    width: 100% ;
+    height: 100%;
+    background: #eaeaea;
+    border: 25px solid #1743e3;
+    box-shadow: -15px 15px 15px rgba(0, 0, 0, .2);
+    opacity: 0;
+     animation: zoomOut 1s ease forwards;
+     animation-delay: 1.6s;
+
+}
+
+
+.home-img .rhombus img{
+  position: absolute;
+  top: 110px;
+  left: -250px;
+  max-width: 750px;
+  transform: rotate(-45deg);
+  opacity: 0;
+  animation: car 1s ease forwards;
+  animation-delay:  2s;
+}
+
+
+
+.home .rhombus2 {
+    position: absolute;
+    top: -25%;
+    right: -25%;
+    width: 700px;
+    height: 700px;
+    background: #1743e3;
+    transform: rotate(45deg);
+    z-index: -1;
+    opacity: 0;
+    animation: rhombus2 1s ease forwards;
+  
+}
+
+
+
+
+
+
+
+
+/* About Section */
+.about-section {
+    padding: 100px 20px;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.about-content h1 {
+    font-size: 48px;
+    color: #222;
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 0.8s;
+}
+
+.about-content h3 {
+    font-size: 32px;
+    color: #1743e3;
+    margin: 20px 0;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.about-content p {
+    font-size: 18px;
+    color: #555;
+    margin: 20px 0;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1.3s;
+}
+
+.about-content .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #1743e3;
+    border: 2px solid #1743e3;
+    border-radius: 6px;
+    color: #eaeaea;
+    text-decoration: none;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 2s;
+}
+
+.about-content .btn:hover {
+    background: transparent;
+    color: #1743e3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Review Section */
+.review-section {
+    padding: 100px 20px;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.review-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.review-content h1 {
+    font-size: 2.5rem;
+    color: #003366;
+    text-align: center;
+   
+    font-weight: bold;
+
+}
+
+.review-content h3 {
+    font-size: 32px;
+    color: #1743e3;
+    margin: 20px 0;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 0.6s; /* Reduced delay */
+}
+
+.review-content p {
+    font-size: 18px;
+    color: #555;
+    margin: 20px 0;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 0.9s; /* Reduced delay */
+}
+
+.review-card {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: zoomIn 1s ease forwards;
+    animation-delay: 1.2s; /* Adjusted delay */
+}
+
+.review-card h4 {
+    font-size: 20px;
+    color: #1743e3;
+    font-weight: 600;
+}
+
+.review-content .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #1743e3;
+    border: 2px solid #1743e3;
+    border-radius: 6px;
+    color: #eaeaea;
+    text-decoration: none;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 1.5s; /* Adjusted delay */
+}
+
+.review-content .btn:hover {
+    background: transparent;
+    color: #1743e3;
+}
+
+
+
+
+
+
+
+
+
+
+/*Car Css*/
+/* Heading */
+
+
+.order-icon {
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.order-icon i {
+    margin-right: 8px;
+}
+
+.order-icon:hover {
+    color: #007BFF;
+}
+
+
+
+
+
+h1.cars-page-heading {
+    font-size: 2.5rem;
+    color: #003366;
+    text-align: center;
+    margin: 3rem 0 2rem;  /* Adjust the top margin to give space before the heading */
+    font-weight: bold;
+}
+
+
+
+
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+
+
+
+
+
+
+
+/* Common styles */
+.contact,
+.filter-section {
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+
+
+
+
+.filter-section, .car-grid {
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+.filter-section form {
+    display: flex;
+    gap: 1rem; /* Add spacing between elements */
+    align-items: center; /* Vertically align elements */
+    flex-wrap: nowrap; /* Prevent wrapping of elements */
+}
+
+.filter-section form label {
+    margin: 0; /* Remove any default label margin */
+    white-space: nowrap; /* Prevent labels from wrapping */
+}
+
+.filter-section form input,
+.filter-section form select,
+.filter-section form button {
+    padding: 0.5rem;
+    border: 1px solid #003366;
+    border-radius: 5px;
+    flex: 0 0 auto; /* Prevent inputs and button from resizing */
+}
+
+.filter-section form button {
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-section form button:hover {
+    background-color: #00509e;
+}
+
+
+
+
+
+
+
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.car-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    max-width: 340px;
+    width: 100%;
+    margin: 0 auto;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease-in-out;
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Lighter, subtler shadow */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.car-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+}
+
+.car-card .content {
+    padding: 1.25rem;
+    flex-grow: 1;
+}
+
+.car-card .content h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #003366;
+    font-weight: bold;
+}
+
+.car-card .content p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.car-card .content .price {
+    font-size: 1.2rem;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.car-card .content button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.car-card .content button:hover {
+    background-color: #00509e;
+}
+
+
+
+
+
+/* Error Message */
+.error-message {
+    color: red;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+/* Highlighted Error */
+.highlight-error {
+    border-color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contact Section */
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #1743e3;
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.contact p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.contact button {
+    padding: 15px 30px;
+    background: #1743e3;
+    border: 2px solid #1743e3;
+    color: white;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact button:hover {
+    background: transparent;
+    color: #1743e3;
+    border-color: #1743e3;
+}
+
+/* Filter Section */
+.filter-section {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.filter-section form input,
+.filter-section form select,
+.filter-section form button {
+    padding: 0.5rem;
+    border: 1px solid #003366;
+    border-radius: 5px;
+}
+
+.filter-section form button {
+    background-color: #003366;
+    color: #fff;
+}
+
+.filter-section form button:hover {
+    background-color: #00509e;
+}
+
+/* Car Grid */
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+/* Car Card in Grid */
+.car-card .content {
+    padding: 1rem;
+}
+
+.car-card .content h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #003366;
+}
+
+.car-card .content p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.car-card .content .price {
+    font-size: 1rem;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.car-card .content button {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.car-card .content button:hover {
+    background-color: #00509e;
+}
+
+/* Error Handling */
+.error-message {
+    color: red;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.highlight-error {
+    border-color: red;
+}
+
+/* Animations */
+@keyframes slideBottom {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+    0% { transform: translateX(20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideLeft {
+    0% { transform: translateX(-20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideTop {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+
+
+
+/* Contact Section */
+.contact {
+    padding: 50px 8%;
+    background: #f8f8f8; /* Light background */
+    text-align: center;
+    color: #222;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #1743e3; /* Accent color */
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.contact p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.contact button {
+    padding: 15px 30px;
+    background: #1743e3;
+    border: 2px solid #1743e3;
+    color: white;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact button:hover {
+    background: transparent;
+    color: #1743e3;
+    border-color: #1743e3;
+}
+
+
+/* Footer Section */
+.footer {
+    background: #222; /* Dark footer background */
+    color: #fff;
+    padding: 20px 8%; /* Reduced padding */
+    text-align: center;
+}
+
+.footer p {
+    font-size: 14px; /* Smaller font size */
+    margin-bottom: 15px; /* Reduced space between text and social icons */
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Reduced gap between icons */
+}
+
+.footer-social a {
+    color: #fff;
+    font-size: 20px; /* Smaller icon size */
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #1743e3;
+}
+
+/* Footer Social Icons (using Boxicons) */
+.footer-social a i {
+    transition: transform 0.3s ease;
+}
+
+.footer-social a:hover i {
+    transform: scale(1.1);
+}
+
+/* Optional: Adding media query to make footer even more compact on small screens */
+@media (max-width: 768px) {
+    .footer {
+        padding: 15px 5%; /* Adjust padding on smaller screens */
+    }
+
+    .footer p {
+        font-size: 12px; /* Further reduce font size on small screens */
+    }
+
+    .footer-social a {
+        font-size: 18px; /* Slightly smaller icons for mobile */
+    }
+}
+
+
+
+
+
+
+
+/*KEYFRAMES ANIMANTION*/
+@keyframes slideRight{
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft{
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+@keyframes slideTop{
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+@keyframes slideBottom{
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+@keyframes slideSci{
+    0% {
+        transform: translateX(100px) rotate(45deg);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0) rotate(45deg);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomOut{
+    0% {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+
+    100%{
+        transform:  scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes car{
+    0% {
+        transform: translate(300px, -300px) scale(0) rotate(-45deg)  ;
+        opacity: 0;
+    }
+
+    100%{
+        transform: translate(0, 0) scale(1) rotate(-45deg)  ;
+        opacity: 1;
+    }
+}
+
+@keyframes rhombus2{
+    0% {
+        right: -40%;
+        opacity: 0;
+    }
+
+    100%{
+        right: -25%;
+        opacity: 1;
+    }
+}
+
+
+/*Review page*/
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+/* Scroll-to-top Button */
+#scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #1743e3; /* Dark Blue */
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#scroll-to-top:hover {
+    background-color: #bbc9c9; /* Light Teal */
+}
+
+
+
+
+
+
+
+
+
+
+/* Mobile optimization (max-width: 768px for tablets and smaller screens) */
+@media screen and (max-width: 768px) {
+    /* Adjust grid layout for mobile */
+    .container {
+      grid-template-columns: 1fr; /* Stacking columns vertically */
+      padding: 20px; /* Reduce padding */
+    }
+  
+    .section {
+      margin-bottom: 20px; /* Reduce space between sections */
+    }
+  
+    /* Adjust text size for readability */
+    .hero-section h1 {
+      font-size: 24px; /* Smaller font for mobile */
+      line-height: 1.4;
+    }
+  
+    .hero-section p {
+      font-size: 16px; /* Adjust paragraph font size */
+      padding: 10px 0;
+    }
+  
+    /* Optional: Adjust the margins/paddings of other sections */
+    .footer {
+      padding: 10px;
+      font-size: 14px;
+    }
+  
+    /* Hero Image Styling for Mobile */
+    .hero-section img {
+      max-width: 100%; /* Ensures the image is responsive */
+      height: auto; /* Maintains aspect ratio */
+      object-fit: cover; /* Makes sure the image covers the area properly */
+    }
+  
+    /* Horizontal Navigation on Mobile */
+    .navbar {
+      display: flex;
+      justify-content: space-between; /* Space items out more evenly */
+      align-items: center;
+      flex-wrap: nowrap; /* Prevent wrapping */
+      padding: 15px 10px;
+    }
+  
+    /* Navigation Links Styling */
+    .navbar a {
+      font-size: 16px; /* Adjust font size */
+      margin: 0 10px; /* Adjust spacing between links */
+      padding: 8px 12px; /* Adjust padding */
+      text-decoration: none;
+      color: #333; /* Professional color */
+      background-color: #f5f5f5; /* Subtle background color */
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+    }
+  
+    .navbar a:hover {
+      background-color: #1743e3; /* Highlight on hover */
+      color: #fff; /* White text on hover */
+    }
+  
+    /* Adjust Instagram Icon Position */
+    .navbar .social-icons {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; /* Align icons to the right */
+    }
+  
+    .navbar .social-icons a {
+      margin-left: 10px; /* Adjust space between icons */
+      font-size: 20px; /* Adjust size of the icons */
+      color: #333;
+    }
+  
+    /* Optional: Adjust the logo size */
+    .navbar .logo {
+      font-size: 24px;
+    }
+  }
+  
+  /* Further adjustments for very small screens (max-width: 480px for phones) */
+  @media screen and (max-width: 480px) {
+    /* Hide the car image and the blue diamond shape on phones */
+    .home-img img, .home-img .rhombus {
+      display: none; /* Hides both the car image and rhombus on phones */
+    }
+  
+    .hero-section h1 {
+      font-size: 20px; /* Even smaller text for phones */
+    }
+  
+    .section {
+      padding: 15px; /* More padding adjustments */
+    }
+  
+    /* Adjust Navbar Links */
+    .navbar a {
+      font-size: 14px; /* Smaller font for phones */
+      padding: 6px 10px; /* Smaller padding for a compact look */
+      margin: 5px; /* Adjust the spacing for small screens */
+    }
+  
+    /* Optional: Center the logo */
+    .navbar .logo {
+      font-size: 20px; /* Adjust logo size for small screens */
+    }
+  
+    /* Adjust Instagram Icon Size */
+    .navbar .social-icons a {
+      font-size: 18px; /* Adjust icon size for small screens */
+      margin-left: 8px; /* Adjust spacing between icons */
+    }
+  
+    /* Adjust the home image section on smaller screens */
+    .home-img {
+      /* Adjust the size of the container */
+      width: 100%; /* Make sure the container takes up full width */
+      padding: 0; /* Remove padding if necessary */
+      text-align: center; /* Center the content (if desired) */
+    }
+  
+    .rhombus {
+      /* Hide the rhombus on small screens */
+      display: none; /* Hide the blue diamond shape */
+    }
+  }
+  
